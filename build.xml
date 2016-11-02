@@ -25,7 +25,7 @@
 	<!-- javadoc properties -->
 	<property name="javadoc.header" value="Overlay Weaver"/>
 	<property name="javadoc.windowtitle" value="Overlay Weaver"/>
-	<property name="je.src.dir" value="/usr/local/javalib/je-5.0.73/src"/>
+	<property name="je.src.dir" value="/usr/local/javalib/je-6.4.9/src"/>
 
 	<!-- directories -->
 	<property name="lib.dir" value="${basedir}/lib"/>
@@ -47,8 +47,8 @@
 	<property name="jnlp.src.dir" value="${main.src.dir}/jnlp"/>
 	<property name="target.jnlp.dir" value="${target.dir}/jnlp"/>
 	<property name="main.signed.jar" value="${target.jnlp.dir}/overlayweaver-signed.jar"/>
-	<property name="cli.jar" value="${lib.dir}/commons-cli-1.2.jar"/>
-	<property name="cli.signed.jar" value="${target.jnlp.dir}/commons-cli-1.2-signed.jar"/>
+	<property name="cli.jar" value="${lib.dir}/commons-cli-1.3.1.jar"/>
+	<property name="cli.signed.jar" value="${target.jnlp.dir}/commons-cli-1.3.1-signed.jar"/>
 	<property name="jnlp.codebase" value="http://www.shudo.net/owdemo/"/>
 
 	<!-- main classes -->
@@ -62,10 +62,10 @@
 
 	<!-- classpath -->
 	<path id="cli.classpath">
-		<pathelement location="${lib.dir}/commons-cli-1.2.jar"/>
+		<pathelement location="${lib.dir}/commons-cli-1.3.1.jar"/>
 	</path>
 	<path id="je.classpath">
-		<pathelement location="${lib.dir}/je-5.0.73.jar"/>
+		<pathelement location="${lib.dir}/je-6.4.9.jar"/>
 	</path>
 	<path id="xmlrpc.classpath">
 		<pathelement location="${lib.dir}/xmlrpc-common-3.1.3.jar"/>
@@ -73,7 +73,7 @@
 		<pathelement location="${lib.dir}/ws-commons-util-1.0.2.jar"/>
 	</path>
 	<path id="jetty.classpath">
-		<pathelement location="${lib.dir}/servlet-api-3.0.jar"/>
+		<pathelement location="${lib.dir}/servlet-api-3.1.jar"/>
 	</path>
 	<path id="upnp.classpath">
 		<pathelement location="${lib.dir}/clink200.jar"/>
@@ -103,6 +103,11 @@
 		<include name=".cvsignore"/>
 		<include name="**/CVS/**"/>
 		<include name="**/CVS"/>
+	</fileset>
+	<fileset dir="${basedir}" id="git.file" defaultexcludes="no">
+		<include name=".git/**"/>
+		<include name=".git"/>
+		<include name=".gitignore"/>
 	</fileset>
 
 	<!-- targets -->
@@ -231,6 +236,7 @@
 		<delete includeemptydirs="true" quiet="true">
 			<fileset refid="eclipse.file"/>
 			<fileset refid="cvs.file"/>
+			<fileset refid="git.file"/>
 		</delete>
 		<defaultexcludes default="true"/>
 	</target>

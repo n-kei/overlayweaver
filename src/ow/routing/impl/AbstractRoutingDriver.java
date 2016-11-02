@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2012 National Institute of Advanced Industrial Science
+ * Copyright 2006-2013 National Institute of Advanced Industrial Science
  * and Technology (AIST), and contributors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -123,7 +123,7 @@ public abstract class AbstractRoutingDriver implements RoutingRuntime, RoutingSe
 			this.selfIDAddressPair = IDAddressPair.getIDAddressPair(idSizeInByte, selfAddr);
 		}
 
-		this.selfAddressHashCode = selfAddr.hashCode();
+		this.selfAddressHashCode = this.selfIDAddressPair.hashCode();
 
 		this.receiver.setSelfAddress(this.selfIDAddressPair);
 		// The internal MessagingAddress of MessagingReceiver changes to an IDAddressPair here.
@@ -294,7 +294,8 @@ public abstract class AbstractRoutingDriver implements RoutingRuntime, RoutingSe
 	//
 
 	/**
-	 * An utility method for {@link RoutingRuntime RoutingRuntime} users.
+	 * A utility method for {@link RoutingRuntime RoutingRuntime} users.
+>>>>>>> branch 'master' of https://github.com/n-kei/overlayweaver
 	 * Confirm whether the target is alive or not by sending a PING message.
 	 */
 	public boolean ping(MessageSender sender, IDAddressPair target) throws IOException {
